@@ -63,4 +63,4 @@ window.addEventListener("load", () => {
 });
 
 // uploaded on github.
-// checking the git push -u origin main command
+// checking the git push -u origin main
