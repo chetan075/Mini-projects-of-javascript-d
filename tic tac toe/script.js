@@ -70,13 +70,13 @@ const gamedraw = () => {
 };
 
 const disableBoxes = () => {
-  for (box of boxes) {
+  for (let box of boxes) {
     box.disabled = true;
   }
 };
 
 const enableBoxes = () => {
-  for (box of boxes) {
+  for (let box of boxes) {
     box.disabled = false;
     box.innerText = "";
   }

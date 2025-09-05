@@ -33,23 +33,18 @@ const showwinner = (userWin, userchoice, compchoice) => {
 };
 
 const playgame = (userchoice) => {
-  // Gnerate computer choice -> in these programming we are using functions
-  // for small small works this is known as modular way of programming.
+  // Generate computer choice
   const compchoice = gencompchoice();
 
   if (compchoice === userchoice) {
-    // draw game
     drawgame();
   } else {
     let userWin = true;
     if (userchoice === "rock") {
-      //   scissors, paper
       userWin = compchoice === "paper" ? false : true;
     } else if (userchoice === "paper") {
-      // rock, scissors
       userWin = compchoice === "scissor" ? false : true;
     } else {
-      // rock, paper
       userWin = compchoice === "rock" ? false : true;
     }
     showwinner(userWin, userchoice, compchoice);

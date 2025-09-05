@@ -3,36 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Play Rock Paper Scissors against the computer. Simple, fun, and interactive game!"
+    />
     <title>Stone Paper and Scissor - Game</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="choices">
-      <div class="choice" id="rock">
-        <img src="images/rock.png" />
+    <div class="svg-bg-container">
+      <svg
+        class="svg-bg"
+        width="100vw"
+        height="100vh"
+        viewBox="0 0 1440 900"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="400" cy="200" r="120" fill="#00ffe7" opacity="0.15">
+          <animate
+            attributeName="r"
+            values="120;140;120"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <circle cx="1100" cy="700" r="100" fill="#ff00c8" opacity="0.13">
+          <animate
+            attributeName="r"
+            values="100;130;100"
+            dur="2.5s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <circle cx="800" cy="400" r="80" fill="#fff" opacity="0.09">
+          <animate
+            attributeName="r"
+            values="80;110;80"
+            dur="2.8s"
+            repeatCount="indefinite"
+          />
+        </circle>
+      </svg>
+    </div>
+    <div class="main-card">
+      <h1 class="neon-title">Stone Paper Scissors</h1>
+      <div class="score-board">
+        <div class="score player-score">
+          <p id="user-score">0</p>
+          <p>YOU</p>
+        </div>
+        <div class="score computer-score">
+          <p id="comp-score">0</p>
+          <p>COMP</p>
+        </div>
       </div>
-      <div class="choice" id="paper">
-        <img src="images/paper.png" />
+      <div class="creative-choices">
+        <div class="choice" id="rock">
+          <img src="./images/rock.png" alt="Rock" />
+          <span>Rock</span>
+        </div>
+        <div class="choice" id="paper">
+          <img src="./images/paper.png" alt="Paper" />
+          <span>Paper</span>
+        </div>
+        <div class="choice" id="scissor">
+          <img src="./images/scissors.png" alt="Scissors" />
+          <span>Scissors</span>
+        </div>
       </div>
-      <div class="choice" id="scissor">
-        <img src="images/scissors.png" />
+      <div class="msg-container">
+        <p id="msg">Play your Move</p>
       </div>
     </div>
-    <div class="score-board">
-      <div class="score">
-        <p id="user-score">0</p>
-        <p>YOU</p>
-      </div>
-      <div class="score">
-        <p id="comp-score">0</p>
-        <p>COMP</p>
-      </div>
-    </div>
-
-    <div class="msg-container">
-      <p id="msg">Play your Move</p>
-    </div>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

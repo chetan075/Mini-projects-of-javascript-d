@@ -14,41 +14,197 @@
     />
   </head>
   <body>
-    <div class="container">
-      <h1>Currency Converter</h1>
-      <form>
-        <div class="amount">
-          <p>Enter Amount</p>
-          <input value="100" type="text" />
+    <div id="animated-bg"></div>
+    <div class="container card glass animate-in">
+      <div class="brand animate-in">
+        <div class="logo-wrap" aria-hidden="true">
+          <!-- inline SVG logo, no external file required -->
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="60%" stop-color="#0ea5e9" />
+                <stop offset="100%" stop-color="#38bdf8" />
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity="0.98" />
+            <g
+              transform="translate(8,8) scale(0.8)"
+              fill="#021014"
+              opacity="0.95"
+            >
+              <path
+                d="M28 6c-6 0-11 5-11 11s5 11 11 11 11-5 11-11-5-11-11-11zm0 4a7 7 0 110 14 7 7 0 010-14z"
+              />
+              <path d="M9 30l6-6 6 6-6 6-6-6z" transform="rotate(-45 18 30)" />
+            </g>
+            <g
+              stroke="#021014"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            >
+              <path d="M22 18 L14 10" />
+              <path d="M42 46 L50 54" />
+            </g>
+          </svg>
         </div>
-        <div class="dropdown">
+        <h1 class="title animate-in">Currency Converter</h1>
+      </div>
+      <form>
+        <div class="amount animate-in">
+          <label for="amount" class="label">Enter Amount</label>
+          <input
+            id="amount"
+            value="1"
+            type="number"
+            min="0"
+            step="any"
+            title="100"
+            class="input-amount"
+          />
+        </div>
+        <div class="dropdown animate-in">
           <div class="from">
-            <p>From</p>
+            <label for="from-currency" class="label">From</label>
             <div class="select-container">
               <img
                 src="https://flagsapi.com/US/flat/64.png"
                 alt="flag-images"
               />
-              <select name="from"></select>
+              <div class="custom-select-wrapper">
+                <input
+                  type="text"
+                  class="currency-search"
+                  placeholder="Search currency..."
+                  autocomplete="off"
+                />
+                <select id="from-currency" title="form" name="from"></select>
+              </div>
             </div>
           </div>
-          <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          <span class="swap-btn" title="Swap currencies">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          </span>
           <div class="to">
-            <p>to</p>
+            <label for="to-currency" class="label">To</label>
             <div class="select-container">
               <img
                 src="https://flagsapi.com/IN/flat/64.png"
                 alt="flag-images"
               />
-              <select name="to"></select>
+              <div class="custom-select-wrapper">
+                <input
+                  type="text"
+                  class="currency-search"
+                  placeholder="Search currency..."
+                  autocomplete="off"
+                />
+                <select id="to-currency" title="to" name="to"></select>
+              </div>
             </div>
           </div>
         </div>
-        <div class="msg">1USD = 80INR</div>
-        <button>Get Exchange Rate</button>
+        <div class="msg animate-in">1 USD = 80 INR</div>
+        <button type="button" class="convert-btn animate-in">
+          Get Exchange Rate
+        </button>
       </form>
     </div>
     <script src="codes.js"></script>
-    <script src="script.js"></script>
+    <script src="newscript.js"></script>
+    <script>
+      // Animated background using canvas
+      const bg = document.getElementById("animated-bg");
+      bg.style.position = "fixed";
+      bg.style.top = "0";
+      bg.style.left = "0";
+      bg.style.width = "100vw";
+      bg.style.height = "100vh";
+      // bring the canvas visually in front but keep pointer events disabled
+      bg.style.zIndex = "50000";
+      bg.innerHTML = '<canvas id="bg-canvas"></canvas>';
+      const canvas = document.getElementById("bg-canvas");
+      // ensure canvas covers the viewport and doesn't block UI interactions
+      canvas.style.position = "fixed";
+      canvas.style.top = "0";
+      canvas.style.left = "0";
+      canvas.style.width = "100vw";
+      canvas.style.height = "100vh";
+      canvas.style.pointerEvents = "none";
+      canvas.style.mixBlendMode = "overlay";
+      canvas.style.opacity = "0.95";
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext("2d");
+      // Colors matching the animated gradient
+      const colors = [
+        [15, 32, 39], // #0f2027
+        [17, 97, 131], // #116183
+        [56, 189, 248], // #38bdf8
+        [14, 165, 233], // #0ea5e9
+        [15, 23, 42], // #0f172a
+      ];
+      let circles = Array.from({ length: 18 }, (_, i) => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 60 + Math.random() * 80,
+        dx: (Math.random() - 0.5) * 0.7,
+        dy: (Math.random() - 0.5) * 0.7,
+        colorIdx: Math.floor(Math.random() * colors.length),
+        alpha: 0.18 + Math.random() * 0.07,
+        colorShift: Math.random() * 0.02 + 0.005,
+      }));
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let c of circles) {
+          // Animate color index for smooth transitions
+          c.colorIdx += c.colorShift;
+          if (c.colorIdx >= colors.length) c.colorIdx = 0;
+          let idxA = Math.floor(c.colorIdx);
+          let idxB = (idxA + 1) % colors.length;
+          let t = c.colorIdx - idxA;
+          let color = colors[idxA].map((v, i) =>
+            Math.round(v * (1 - t) + colors[idxB][i] * t)
+          );
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(${color[0]},${color[1]},${color[2]},${c.alpha})`;
+          ctx.fill();
+          c.x += c.dx;
+          c.y += c.dy;
+          if (c.x < -c.r) c.x = canvas.width + c.r;
+          if (c.x > canvas.width + c.r) c.x = -c.r;
+          if (c.y < -c.r) c.y = canvas.height + c.r;
+          if (c.y > canvas.height + c.r) c.y = -c.r;
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+      // Entrance animation
+      document.querySelectorAll(".animate-in").forEach((el, i) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(40px) scale(0.98)";
+        setTimeout(() => {
+          el.style.transition = "all 0.7s cubic-bezier(.77,.2,.25,1)";
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0) scale(1)";
+        }, 200 + i * 120);
+      });
+    </script>
+    <script src="codes.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="newscript.js"></script>
   </body>
 </html>
