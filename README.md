@@ -1,3 +1,23 @@
+# Landing Page
+
+A new landing page (`index.html` in the root folder) provides a central hub for all three games. The landing page features:
+
+- Modern dark theme inspired by Next.js official pages
+- Clean, high-contrast layout for maximum readability
+- Simple cards for each game with clear descriptions and Play buttons
+- Responsive design for desktop and mobile
+
+**How to use:**
+- Open `index.html` in your browser to access all games from one place.
+
+**UI Details:**
+- Deep neutral backgrounds (`#18181b`, `#23272f`)
+- High contrast white text and subtle gray accents
+- Minimal, readable cards with soft shadows
+- Simple, clear buttons with strong hover states
+- Modern sans-serif font and balanced spacing
+
+All individual games remain accessible via their own folders, but the landing page is now the recommended entry point for the best experience.
 # Mini JavaScript Projects
 
 > This repository contains three interactive JavaScript mini-projects, each designed to teach and demonstrate core web development concepts: DOM manipulation, event handling, game logic, and UI design. All projects are self-contained and require only a web browser to run.
