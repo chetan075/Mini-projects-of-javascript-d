@@ -187,3 +187,34 @@ img{
     padding: 1rem;
     border-radius: 1rem;
 }
+
+@media (max-width: 900px) {
+  #msg {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.7rem;
+    min-width: 120px;
+    max-width: 80vw;
+    word-break: break-word;
+  }
+}
+@media (max-width: 600px) {
+  #msg {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.4rem;
+    min-width: 90px;
+    max-width: 90vw;
+    word-break: break-word;
+  }
+}
+@media (max-width: 400px) {
+  #msg {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.3rem;
+    border-radius: 0.2rem;
+    min-width: 70px;
+    max-width: 98vw;
+    word-break: break-word;
+  }
+}
