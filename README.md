@@ -212,6 +212,7 @@ A simple implementation of the popular hand game:
 
 - Open `Stone Paper Scissors/index.html` in your browser.
 
+
 ### 3. Currency Converter
 
 A basic currency conversion tool:
@@ -223,6 +224,36 @@ A basic currency conversion tool:
 **How to run:**
 
 - Open `currency converter/index.html` in your browser.
+
+---
+
+### Currency Converter Backend (Node/Express)
+
+> **Note:** The Currency Converter backend (Node/Express in `currency converter/backend/server.js`) will **not work on Vercel** as-is.
+
+#### Why it won’t work on Vercel
+
+- Vercel only supports serverless functions (API endpoints as individual files in an `/api` folder).
+- Traditional Node.js/Express servers (using `app.listen`) are not supported on Vercel.
+- Vercel does not run persistent servers; it only runs serverless functions per request.
+
+#### How to run the backend locally
+
+1. Open a terminal in `currency converter/backend/`.
+2. Run `npm install` (if not already done).
+3. Start the server: `node server.js`
+4. The backend will be available at `http://localhost:3000/convert` and `http://localhost:3000/rates`.
+
+#### How to use with the frontend
+
+- The frontend JS is configured to call `http://localhost:3000/convert`.
+- Make sure your backend is running before using the converter in your browser.
+
+#### If you want to deploy on Vercel
+
+- You must refactor the backend as serverless functions (one file per endpoint in `/api`).
+- Remove any use of `app.listen` and Express middleware.
+- See Vercel documentation for details: https://vercel.com/docs/functions
 
 ## Folder Structure
 
