@@ -244,8 +244,8 @@ const updateExchangeRate = async () => {
   }
 
   console.log(fromCurr.value, toCurr.value);
-  //   const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
-  const URL = `http://localhost:3001/api/convert?from=${fromCurr.value}&to=${toCurr.value}&amount=${amtVal}`;
+  // Use relative API endpoint for Vercel serverless backend
+  const URL = `/api/convert?from=${fromCurr.value}&to=${toCurr.value}&amount=${amtVal}`;
   let response = await fetch(URL);
   let data = await response.json();
   console.log(data);
