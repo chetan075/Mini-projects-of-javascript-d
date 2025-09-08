@@ -1,3 +1,107 @@
+@media (max-width: 900px) {
+  .container {
+    min-height: 60vh;
+    padding: 0.5rem;
+  }
+  .game {
+    height: 80vw;
+    width: 80vw;
+    gap: 2vw;
+    border-radius: 1.2rem;
+  }
+  .box {
+    height: 24vw;
+    width: 24vw;
+    font-size: 6vw;
+    border-radius: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #msg {
+    font-size: 7vw;
+  }
+  button#reset-btn, button#new-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    min-height: 40vh;
+    padding: 0.2rem;
+  }
+  .game {
+    height: 96vw;
+    width: 96vw;
+    gap: 2vw;
+    border-radius: 0.7rem;
+  }
+  .box {
+    height: 30vw;
+    width: 30vw;
+    font-size: 7vw;
+    border-radius: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #msg {
+    font-size: 8vw;
+  }
+  button#reset-btn, button#new-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
+  }
+  .msg-container {
+    min-height: 60vw;
+    gap: 1rem;
+    border-radius: 1rem;
+    padding: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    min-height: 20vh;
+    padding: 0.1rem;
+  }
+  .game {
+    height: 99vw;
+    width: 99vw;
+    gap: 1vw;
+    border-radius: 0.3rem;
+  }
+  .box {
+    height: 32vw;
+    width: 32vw;
+    font-size: 6vw;
+    border-radius: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #msg {
+    font-size: 9vw;
+  }
+  button#reset-btn, button#new-btn {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.3rem;
+  }
+  .msg-container {
+    min-height: 30vw;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -49,13 +153,17 @@ body {
   border-radius: 20%;
   border: none;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
-  font-size: 12vh;
+  font-size: 8vmin;
   background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
   color: #480355;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, background 0.5s;
   position: relative;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .box:hover:not(:disabled) {
   transform: scale(1.08) rotate(-2deg);
